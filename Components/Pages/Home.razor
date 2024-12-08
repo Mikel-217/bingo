@@ -12,9 +12,11 @@
         <table>
             @if (randomWords != null && randomWords.Count == 25) {
                 @for (int row = 0; row < 5; row++) {
-                    <tr class="bingo-tablerow">
+                    <tr class="bingo-row">
                         @for (int col = 0; col < 5; col++) {
-                            <button class="bingo-tablecol">@randomWords[row * 5 + col]</button>
+                            <td class="bingo-tablecell">
+                                <button class="bingo-tablebutton">@randomWords[row * 5 + col]</button>
+                            </td>
                         }
                     </tr>
                 }

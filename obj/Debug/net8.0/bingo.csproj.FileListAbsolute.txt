@@ -52,3 +52,4 @@ C:\tmp\bingo\bin\Debug\net8.0\System.Threading.Channels.dll
 C:\tmp\bingo\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\tmp\bingo\obj\Debug\net8.0\bingo.csproj.AssemblyReference.cache
 C:\tmp\bingo\obj\Debug\net8.0\bingo.csproj.Up2Date
+C:\tmp\bingo\obj\Debug\net8.0\bingo.sourcelink.json
