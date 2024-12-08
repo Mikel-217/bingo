@@ -1,0 +1,59 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+
+<PageTitle>Home</PageTitle>
+
+
+<h1>Lifka Bingo</h1>
+
+<div class="bingo-container">
+    <div class="bingo-table">
+        <table>
+            @if (randomWords != null && randomWords.Count == 25) {
+                @for (int row = 0; row < 5; row++) {
+                    <tr class="bingo-tablerow">
+                        @for (int col = 0; col < 5; col++) {
+                            <button class="bingo-tablecol">@randomWords[row * 5 + col]</button>
+                        }
+                    </tr>
+                }
+            }
+            else {
+                <tr>
+                    <td colspan="5">Loading...</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
+
+@code {
+    Random random = new Random();
+    Bingodata bingoData = new Bingodata();
+    List<string>? randomWords = new List<string>();
+    List<string>? data2 = new List<string>();
+
+    private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
+    protected override async Task OnInitializedAsync() {
+        try {
+            string jsonData = await File.ReadAllTextAsync(path);
+            var data = JsonSerializer.Deserialize<Bingodata>(jsonData);
+            if (data == null || data.bingoWords == null) {
+                throw new Exception("Bingodata or bingoWords is null");
+            }
+
+            int lengt = data.bingoWords.Count();
+            for(int bingoField = 0; bingoField < 25; bingoField++) {
+                int index = random.Next(1, 26);
+                string currentWord = data.bingoWords[index];
+                randomWords?.Add(currentWord);
+            }
+
+        } catch(Exception e) {
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.StackTrace);
+        }
+    }
+}
