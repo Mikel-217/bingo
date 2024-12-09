@@ -52,3 +52,4 @@ C:\tmp\bingo\obj\Release\net8.0\refint\bingo.dll
 C:\tmp\bingo\obj\Release\net8.0\bingo.pdb
 C:\tmp\bingo\obj\Release\net8.0\bingo.genruntimeconfig.cache
 C:\tmp\bingo\obj\Release\net8.0\ref\bingo.dll
+C:\tmp\bingo\obj\Release\net8.0\bingo.sourcelink.json

@@ -16,7 +16,7 @@
                         @for (int col = 0; col < 5; col++) {
                             int index = row * 5 + col;
                             <td class="bingo-tablecell">
-                                <button class="@selectet" @onclick="select">@randomWords[index]</button>
+                                <button class="bingo-tablebutton" @onclick="(() => select(index))">@randomWords[index]</button>
                             </td>
                         }
                     </tr>
@@ -28,13 +28,10 @@
                 </tr>
             }
         </table>
-
     </div>
 </div>
 
 @code {
-
-    string selectet = "bingo-tablebutton";
     Random random = new Random();
     Bingodata bingoData = new Bingodata();
     List<string>? randomWords = new List<string>();
@@ -50,10 +47,15 @@
             }
 
             int lengt = data.bingoWords.Count();
-            for(int bingoField = 0; bingoField < 25; bingoField++) {
+            for (int bingoField = 0; bingoField < 25; bingoField++) {
                 int index = random.Next(1, 26);
                 string currentWord = data.bingoWords[index];
-                randomWords?.Add(currentWord);
+                if(randomWords!.Contains(currentWord)) {
+                    bingoField--;
+                    continue;
+                } else {
+                    randomWords?.Add(currentWord);
+                }
             }
 
         } catch(Exception e) {
@@ -62,7 +64,9 @@
         }
     }
 
-    private void select() {
-        selectet = "bingo-tablebutton-clickt";
+    private void select(int index) {
+        Console.WriteLine("Button pressed");
+        @* Color = "background-color: #90EE90;"; *@
+        StateHasChanged();
     }
 }
