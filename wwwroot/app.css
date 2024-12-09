@@ -1,29 +1,30 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     height: 100vh;
     margin: 0;
-    display: block;
+    text-align: center;
 }
 
 .bingo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
 }
 
 .bingo-table {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
+    border-collapse: collapse;
     margin: auto;
 }
 
+.bingo-tablecell {
+    padding: 5px;
+}
+
 .bingo-tablebutton {
-    width: 150px;
+    width: 200px;
     height: 100px;
     background-color: #f0f0f0;
     border: none;
@@ -34,4 +35,14 @@ html, body {
 
 .bingo-tablebutton:hover {
     background-color: #ddd;
+}
+
+.bingo-tablebutton-clickt {
+    width: 200px;
+    height: 100px;
+    background-color: #90EE90;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    text-align: center;
 }
