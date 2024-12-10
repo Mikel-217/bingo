@@ -37,7 +37,7 @@ html, body {
     background-color: #ddd;
 }
 
-.bingo-tablebuttonactive {
+.bingo-tablebutton.active {
     width: 200px;
     height: 100px;
     background-color: #90EE90;
