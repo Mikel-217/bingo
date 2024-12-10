@@ -15,8 +15,9 @@
                     <tr class="bingo-row">
                         @for (int col = 0; col < 5; col++) {
                             int index = row * 5 + col;
+                            buttonindex!.Add(index);
                             <td class="bingo-tablecell">
-                                <button class="bingo-tablebutton" @onclick="(() => select(index))">@randomWords[index]</button>
+                                <button class="bingo-tablebutton @(isActive ? "active" : "")" @onclick="@(e => Select(e, index))">@randomWords[index]</button>
                             </td>
                         }
                     </tr>
@@ -31,9 +32,14 @@
     </div>
 </div>
 
+<p>@test2</p>
 @code {
+    int test2;
+    bool isActive = false;
     Random random = new Random();
     Bingodata bingoData = new Bingodata();
+
+    public List<int>? buttonindex = new List<int>();
     List<string>? randomWords = new List<string>();
     List<string>? data2 = new List<string>();
 
@@ -63,10 +69,16 @@
             Console.WriteLine(e.StackTrace);
         }
     }
-
-    private void select(int index) {
+    private void Select(MouseEventArgs e, int index) {
         Console.WriteLine("Button pressed");
-        @* Color = "background-color: #90EE90;"; *@
+
+        if(buttonindex!.Contains(index)) {
+            isActive = true;
+        }else {
+            isActive = false;
+        }
+
+        test2 = index;
         StateHasChanged();
     }
 }
