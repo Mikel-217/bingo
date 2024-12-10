@@ -1,9 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 
-
 <PageTitle>Home</PageTitle>
-
 
 <h1>Lifka Bingo</h1>
 
@@ -15,9 +13,8 @@
                     <tr class="bingo-row">
                         @for (int col = 0; col < 5; col++) {
                             int index = row * 5 + col;
-                            buttonindex!.Add(index);
                             <td class="bingo-tablecell">
-                                <button class="bingo-tablebutton @(isActive ? "active" : "")" @onclick="@(e => Select(e, index))">@randomWords[index]</button>
+                                <button class="bingo-tablebutton@(buttonStates[index] ? "active" : "")"@onclick="@(e => Select(e, index))">@randomWords[index]</button>
                             </td>
                         }
                     </tr>
@@ -33,18 +30,16 @@
 </div>
 <p>@test2</p>
 
-
 @code {
     int test2;
-    bool isActive = false;
     Random random = new Random();
     Bingodata bingoData = new Bingodata();
 
     public List<int>? buttonindex = new List<int>();
     List<string>? randomWords = new List<string>();
-    List<string>? data2 = new List<string>();
-
+    Dictionary<int, bool> buttonStates = new Dictionary<int, bool>();
     private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
+
     protected override async Task OnInitializedAsync() {
         try {
             string jsonData = await File.ReadAllTextAsync(path);
@@ -62,6 +57,7 @@
                     continue;
                 } else {
                     randomWords?.Add(currentWord);
+                    buttonStates[bingoField] = false;
                 }
             }
 
@@ -70,16 +66,10 @@
             Console.WriteLine(e.StackTrace);
         }
     }
+
     private void Select(MouseEventArgs e, int index) {
         Console.WriteLine("Button pressed");
-
-        if(buttonindex!.Contains(index)) {
-            isActive = true;
-            isActive = !isActive;
-        }else {
-            isActive = false;
-        }
-
+        buttonStates[index] = !buttonStates[index];
         test2 = index;
         StateHasChanged();
     }
