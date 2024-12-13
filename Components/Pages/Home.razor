@@ -8,7 +8,7 @@
 
 <div class="modal-overlay" style="@(_isVisible ? "display: block;" : "display: none;")">
     <div class="modal-content">
-        <h2>BINGOOOOOOO</h2>
+        <h2>BINGOOOOOO</h2>
         <p>Du hast gewonnen!</p>
         <button class="buttonmain" @onclick="Close">Schließen</button>
     </div>
@@ -55,9 +55,17 @@
     List<string>? randomWords = new List<string>();
     private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
 
-    protected override async Task OnInitializedAsync() {
+    protected override void OnInitialized() {
+        createBingo();
+    }
+    private void createBingo() {
+        randomWords!.Clear();
+        buttonindex!.Clear();
+        buttonStates!.Clear();
+        pressedButton!.Clear();
+
         try {
-            string jsonData = await File.ReadAllTextAsync(path);
+            string jsonData = File.ReadAllText(path);
             var data = JsonSerializer.Deserialize<Bingodata>(jsonData);
             if (data == null || data.bingoWords == null) {
                 throw new Exception("Bingodata or bingoWords is null");
@@ -81,7 +89,6 @@
             Console.WriteLine(e.StackTrace);
         }
     }
-
     private void Select(MouseEventArgs e, int index) {
         Console.WriteLine("Button pressed");
         buttonStates[index] = !buttonStates[index];
@@ -92,7 +99,6 @@
         checkfBingo();
         StateHasChanged();
     }
-
     private bool checkfBingo() {
         List<int[]> rows = new List<int[]> {bingorows.bingorow1, bingorows.bingorow2, bingorows.bingorow3, bingorows.bingorow4, bingorows.bingorow5};
         foreach (var row in rows) {
@@ -103,14 +109,15 @@
         }
         return bingostate;
     }
-
-    public void Show() {
+    //for displaying the popup
+    @* public void Show() {
         _isVisible = true;
         StateHasChanged();
-    }
+    } *@
 
     private void Close() {
         _isVisible = false;
         StateHasChanged();
+        createBingo();
     }
 }
