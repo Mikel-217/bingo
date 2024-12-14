@@ -1,0 +1,56 @@
+@page "/admin"
+@rendermode InteractiveServer
+@using Admin;
+
+
+<PageTitle>Admin Page</PageTitle>
+
+<div class="modalpw-overlay" style="@(_isVisible ? "display: block;" : "display: none;")">
+    <div class="modalpw-content">
+        <h2>Bitte Password und User eingeben:</h2>
+        <div class="modalpw-input">
+            <input class="inputfield" type="text" placeholder="Username" @bind="inputuser">
+            <input class="inputfield" type="password" placeholder="Passwort" @bind="inputpw">
+        </div>
+        <button class="buttonmain" @onclick="checkPW">Anmelden</button>
+    <p style="color:red; margin: 10px;">@message</p>
+    </div>
+</div>
+
+
+
+<h1>Admin Page</h1>
+<div>
+    <h2>Please enter new Words:</h2>
+    <div>
+        <input class="inputfield">
+    </div>
+    <button class="buttonmain" onclick="addWord">Add</button>
+</div>
+
+@code {
+
+    private AdminController admin = new AdminController();
+
+    private string message = "";
+    private string? inputpw { get; set; }
+    private string? inputuser { get; set; }
+    private string pw = "admin";
+    private string user = "admin";
+    private bool _isVisible = true;
+
+    private void checkPW() {
+        message = "";
+        if(!string.IsNullOrEmpty(inputpw) && !string.IsNullOrEmpty(inputuser)) {
+            if(inputpw == pw && inputuser == user)
+                _isVisible = false;
+            else message = "Falscher Benutzer / Falsches Passwort!";
+        } else {
+            message = "User und Passwort dürfen nicht leer sein!";
+        }
+
+    }
+    private void addWord() {
+        admin.wordhandler();
+    }
+}

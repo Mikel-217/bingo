@@ -109,3 +109,45 @@ html, body {
 .buttonmain:hover {
     background-color: #ddd;
 }
+
+
+/** Password pop up **/
+
+.modalpw-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modalpw-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    height: 300px;
+    gap: 10px;
+    box-sizing: border-box;
+}
+.modalpw-input {
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputfield {
+    margin: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    border-color: black, black;
+}
