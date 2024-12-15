@@ -11,3 +11,7 @@ public class Bingorows {
     public int[] bingorow4 = {3, 8, 13, 18, 23};
     public int[] bingorow5 = {4, 9, 14, 19, 24};
 }
+
+public class NewBingo {
+    public List<string> newWordslist { get; set; } = new List<string>();
+}

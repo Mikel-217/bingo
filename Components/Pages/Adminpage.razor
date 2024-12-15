@@ -1,6 +1,5 @@
 @page "/admin"
 @rendermode InteractiveServer
-@using Admin;
 
 
 <PageTitle>Admin Page</PageTitle>
@@ -18,25 +17,43 @@
 </div>
 
 
-
 <h1>Admin Page</h1>
 <div>
     <h2>Please enter new Words:</h2>
     <div>
-        <input class="inputfield">
+        <input class="inputfield" type="text" @bind="newWord">
     </div>
-    <button class="buttonmain" onclick="addWord">Add</button>
+    <button class="buttonmain" @onclick="addWord">Add</button>
+    <button class="buttonmain" @onclick="save">Save to File</button>
 </div>
+
+<!-- TODO: 
+- Add table with all words
+- Buttons to delete words
+- Buttons to change words
+-->
+
 
 @code {
 
+    private NewBingo? bingo = new NewBingo();
     private AdminController admin = new AdminController();
 
+    //new words:
+    private string? newWord { get; set; }
+
+    //Message vor false PW:
     private string message = "";
+    
+    //User Input
     private string? inputpw { get; set; }
     private string? inputuser { get; set; }
+
+    //pshhhh no pw here :D
     private string pw = "admin";
     private string user = "admin";
+
+    //bool for pop up
     private bool _isVisible = true;
 
     private void checkPW() {
@@ -51,6 +68,14 @@
 
     }
     private void addWord() {
+        Console.WriteLine(newWord);
+        if(!string.IsNullOrEmpty(newWord)) {
+            bingo?.newWordslist.Add(newWord!);
+            newWord = "";
+        }
+    }
+    private void save() {
+        admin.data = bingo;
         admin.wordhandler();
     }
 }
