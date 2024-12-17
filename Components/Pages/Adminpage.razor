@@ -8,8 +8,8 @@
     <div class="modalpw-content">
         <h2>Bitte Password und User eingeben:</h2>
         <div class="modalpw-input">
-            <input class="inputfield" type="text" placeholder="Username" @bind="inputuser">
-            <input class="inputfield" type="password" placeholder="Passwort" @bind="inputpw">
+            <input class="modalpw-input" type="text" placeholder="Username" @bind="input.inputuser">
+            <input class="modalpw-input" type="password" placeholder="Passwort" @bind="input.inputpw">
         </div>
         <button class="buttonmain" @onclick="checkPW">Anmelden</button>
     <p style="color:red; margin: 10px;">@message</p>
@@ -18,37 +18,55 @@
 
 
 <h1>Admin Page</h1>
-<div>
-    <h2>Please enter new Words:</h2>
-    <div>
-        <input class="inputfield" type="text" @bind="newWord">
+<div class="bingo-container">
+    <div class="bingo-addword">
+        <h2>Please enter new Words:</h2>
+        <input class="modalpw-input" type="text" @bind="bingo!.newWord">
+        <div>
+            <button class="buttonmain" @onclick="addWord">Add</button>
+            <button class="buttonmain" @onclick="save">Save to File</button>
+        </div>
     </div>
-    <button class="buttonmain" @onclick="addWord">Add</button>
-    <button class="buttonmain" @onclick="save">Save to File</button>
+    <div class="bingo-table-add-container">
+        <table class="bingo-table-add">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(int i = 0; i < length; i++) {
+                    int localindex = i;
+                    <tr>
+                        <td>@admin.currentwords[i] @i</td>
+                        <td><button class="buttonmain" @onclick="@(e => delete(e, localindex))">Delete</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- TODO: 
-- Add table with all words
-- Buttons to delete words
+- New table desing
 - Buttons to change words
 -->
 
 
-@code {
 
+@code {
     private NewBingo? bingo = new NewBingo();
+    private Bingodata bingodata = new Bingodata();
     private AdminController admin = new AdminController();
 
-    //new words:
-    private string? newWord { get; set; }
+    int length = 0;
 
+    Userinp input = new Userinp();
+    private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
     //Message vor false PW:
     private string message = "";
     
-    //User Input
-    private string? inputpw { get; set; }
-    private string? inputuser { get; set; }
-
     //pshhhh no pw here :D
     private string pw = "admin";
     private string user = "admin";
@@ -56,10 +74,28 @@
     //bool for pop up
     private bool _isVisible = true;
 
+    protected override void OnInitialized() {
+        admin.currentwords.Clear();
+        bingodata?.bingoWords!.Clear();
+        try {
+            string jsonData = File.ReadAllText(path);
+            var data = JsonSerializer.Deserialize<Bingodata>(jsonData);
+            if (data == null || data.bingoWords == null) {
+                throw new Exception("Bingodata or bingoWords is null");
+            }
+            foreach(var currentword in data.bingoWords) {
+                admin.currentwords.Add(currentword);
+            }
+            length = admin.currentwords.Count();
+        } catch(Exception e) {
+            Console.WriteLine(e.Message);
+        }
+    }
+
     private void checkPW() {
         message = "";
-        if(!string.IsNullOrEmpty(inputpw) && !string.IsNullOrEmpty(inputuser)) {
-            if(inputpw == pw && inputuser == user)
+        if(!string.IsNullOrEmpty(input.inputpw) && !string.IsNullOrEmpty(input.inputuser)) {
+            if(input.inputpw == pw && input.inputuser == user)
                 _isVisible = false;
             else message = "Falscher Benutzer / Falsches Passwort!";
         } else {
@@ -68,14 +104,21 @@
 
     }
     private void addWord() {
-        Console.WriteLine(newWord);
-        if(!string.IsNullOrEmpty(newWord)) {
-            bingo?.newWordslist.Add(newWord!);
-            newWord = "";
+        Console.WriteLine(bingo?.newWord);
+        if(!string.IsNullOrEmpty(bingo?.newWord)) {
+            bingo!.newWordslist.Add(bingo.newWord!);
+            bingo!.newWord = "";
         }
     }
     private void save() {
         admin.data = bingo;
         admin.wordhandler();
+    }
+
+    private void delete(MouseEventArgs e, int localindex) {
+        Console.WriteLine(localindex);
+        admin.deletedWord = admin.currentwords.ElementAt(localindex); 
+        Console.WriteLine(admin.deletedWord);
+        admin.deleteword();
     }
 }

@@ -6,10 +6,9 @@ namespace Admin;
 
 public partial class AdminController {
     public NewBingo? data;
-
-    private List<string> currentwords = new List<string>();
+    public List<string> currentwords = new List<string>();
+    public string? deletedWord { get; set; }
     private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
-
     public void wordhandler() {
         if (data?.newWordslist == null || data.newWordslist.Count == 0) {
             Console.WriteLine("Empty");
@@ -49,5 +48,16 @@ public partial class AdminController {
         catch (Exception e) {
             Console.WriteLine(e.Message);
         }
+    }
+
+    public void deleteword() {
+        Console.WriteLine(deletedWord);
+        if (currentwords.Contains(deletedWord!)) {
+            currentwords.Remove(deletedWord!);
+            writeData();
+        } else {
+            throw new Exception("Word doesnt exist!");
+        }
+        deletedWord = "";
     }
 }

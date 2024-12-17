@@ -1,7 +1,7 @@
 namespace Data;
 
 public class Bingodata {
-    public List<string>? bingoWords { get; set; }
+    public List<string>? bingoWords { get; set; } = new List<string>();
 }
 
 public class Bingorows {
@@ -13,5 +13,11 @@ public class Bingorows {
 }
 
 public class NewBingo {
+    public string? newWord { get; set; }
     public List<string> newWordslist { get; set; } = new List<string>();
+}
+
+public class Userinp {
+    public string? inputpw { get; set; }
+    public string? inputuser { get; set; }
 }

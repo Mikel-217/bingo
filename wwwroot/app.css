@@ -3,13 +3,14 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     text-align: center;
 }
 
 .bingo-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -140,14 +141,47 @@ html, body {
     box-sizing: border-box;
 }
 .modalpw-input {
+    border-radius: 8px;
+    padding: 5px;
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.inputfield {
+.modalpw-inpu.modalpw-inpu {
     margin: 10px;
     padding: 8px;
     border-radius: 8px;
     border-color: black, black;
+}
+
+/** Add section **/
+
+.bingo-addword {
+    margin: 20px;
+}
+
+.bingo-table-add-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
+
+.bingo-table-add {
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.bingo-table-add th, .bingo-table-add td {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    padding-right: 50px;
+    text-align: left;
+}
+
+.bingo-table-add thead {
+    background-color: #f2f2f2;
 }

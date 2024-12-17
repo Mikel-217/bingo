@@ -39,7 +39,7 @@
 </div>
 
 @code {
-    private bool bingostate = false;
+    private bool _bingostate = false;
     private bool _isVisible;
 
     Random random = new Random();
@@ -63,6 +63,7 @@
         buttonindex!.Clear();
         buttonStates!.Clear();
         pressedButton!.Clear();
+        bingoData?.bingoWords!.Clear();
 
         try {
             string jsonData = File.ReadAllText(path);
@@ -104,10 +105,10 @@
         foreach (var row in rows) {
             if (row.All(num => pressedButton!.Contains(num))) {
                 _isVisible = true;
-                return bingostate = true;
-            } else bingostate = false;
+                return _bingostate = true;
+            } else _bingostate = false;
         }
-        return bingostate;
+        return _bingostate;
     }
     
     //for displaying the popup
