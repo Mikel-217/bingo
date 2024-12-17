@@ -15,6 +15,7 @@ public class Bingorows {
 public class NewBingo {
     public string? newWord { get; set; }
     public List<string> newWordslist { get; set; } = new List<string>();
+    public List<string> currentwords { get; set; } = new List<string>();
 }
 
 public class Userinp {

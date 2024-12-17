@@ -1,12 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using Data;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc.Razor.Internal;
 
 namespace Admin;
 
 public partial class AdminController {
+
+    NavigationManager? navigationManager;
     public NewBingo? data;
-    public List<string> currentwords = new List<string>();
+    
+    public List<string> currentwords { get; set; } = new List<string>();
     public string? deletedWord { get; set; }
     private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
     public void wordhandler() {
@@ -42,6 +47,7 @@ public partial class AdminController {
             var bingoData = new Bingodata { bingoWords = currentwords };
             string writingData = JsonSerializer.Serialize(bingoData, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, writingData);   
+            navigationManager!.Refresh();
             data?.newWordslist.Clear();
             currentwords.Clear();
         }
