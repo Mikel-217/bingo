@@ -1,5 +1,6 @@
 @page "/admin"
 @rendermode InteractiveServer
+@inject NavigationManager nav
 
 
 <PageTitle>Admin Page</PageTitle>
@@ -25,6 +26,7 @@
         <div>
             <button class="buttonmain" @onclick="addWord">Add</button>
             <button class="buttonmain" @onclick="save">Save to File</button>
+            <button class="buttonmain" @onclick="refresh">Refresh</button>
         </div>
     </div>
     <div class="bingo-table-add-container">
@@ -37,9 +39,9 @@
             </thead>
             <tbody>
                 @for(int i = 0; i < length; i++) {
-                    int localindex = i;
+                    localindex = i;
                     <tr>
-                        <td>@admin.currentwords[i] @i</td>
+                        <td>@admin.currentwords[i]</td>
                         <td><button class="buttonmain" @onclick="@(e => delete(e, localindex))">Delete</button></td>
                     </tr>
                 }
@@ -53,28 +55,30 @@
 - Buttons to change words
 -->
 
-
-
 @code {
     private NewBingo? bingo = new NewBingo();
     private Bingodata bingodata = new Bingodata();
     private AdminController admin = new AdminController();
-
-    int length = 0;
-
     Userinp input = new Userinp();
+
+
+    int localindex;
+    int length = 0;
     private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
     //Message vor false PW:
     private string message = "";
     
     //pshhhh no pw here :D
     private string user = "admin";
-    private string pw = "!123456789@dia";
+    private string pw = "diamondhost123";
 
     //bool for pop up
     private bool _isVisible = true;
-
     protected override void OnInitialized() {
+        readData();
+    }
+
+    private void readData() {
         admin.currentwords.Clear();
         bingodata?.bingoWords!.Clear();
         try {
@@ -111,14 +115,23 @@
         }
     }
     private void save() {
-        admin.data = bingo;
-        admin.wordhandler();
+        if(!_isVisible) {
+            admin.data = bingo;
+            admin.wordhandler();
+        }
     }
 
     private void delete(MouseEventArgs e, int localindex) {
-        Console.WriteLine(localindex);
-        admin.deletedWord = admin.currentwords.ElementAt(localindex); 
-        Console.WriteLine(admin.deletedWord);
-        admin.deleteword();
+        if(!_isVisible) { 
+            admin.deletedWord = admin.currentwords.ElementAt(localindex); 
+            Console.WriteLine(admin.deletedWord);
+            admin.deleteword();
+        }
+    }
+
+    public void refresh() {
+        localindex = 0;
+        readData();
+        StateHasChanged();
     }
 }

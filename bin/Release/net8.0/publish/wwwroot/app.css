@@ -6,6 +6,8 @@ html, body {
     min-height: 100vh;
     margin: 0;
     text-align: center;
+    background-color: #121212;
+    color: #e0e0e0;
 }
 
 .bingo-container {
@@ -27,25 +29,27 @@ html, body {
 .bingo-tablebutton {
     width: 200px;
     height: 100px;
-    background-color: #f0f0f0;
-    border: none;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
     cursor: pointer;
     font-size: 17px;
     text-align: center;
+    color: #e0e0e0;
 }
 
 .bingo-tablebutton:hover {
-    background-color: #ddd;
+    background-color: #333;
 }
 
 .bingo-tablebuttonactive {
     width: 200px;
     height: 100px;
-    background-color: #90EE90;
-    border: none;
+    background-color: #5e3370;
+    border: 1px solid #5e3370;
     cursor: pointer;
     font-size: 17px;
     text-align: center;
+    color: #fff;
 }
 
 @media (max-width: 640.98px) { 
@@ -56,20 +60,22 @@ html, body {
     .bingo-tablebutton {
         width: 70px;
         height: 50px;
-        background-color: #f0f0f0;
-        border: none;
+        background-color: #1f1f1f;
+        border: 1px solid #333;
         cursor: pointer;
         font-size: 10px;
         text-align: center;
+        color: #e0e0e0;
     }
     .bingo-tablebuttonactive {
         width: 70px;
         height: 50px;
-        background-color: #90EE90;
-        border: none;
+        background-color: #5e3370;
+        border: 1px solid #5e3370;
         cursor: pointer;
         font-size: 10px;
         text-align: center;
+        color: #fff;
     }
 }
 
@@ -79,7 +85,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
 }
 
@@ -88,31 +94,30 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: #1e1e1e;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     text-align: center;
     max-width: 90%;
     width: 400px;
     box-sizing: border-box;
+    color: #e0e0e0;
 }
 
 .buttonmain {
     border-radius: 8px;
-    background-color: #f0f0f0;
-    border: none;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
     cursor: pointer;
     padding: 9px;
     font-size: 17px;
+    color: #e0e0e0;
 }
 
 .buttonmain:hover {
-    background-color: #ddd;
+    background-color: #5e3370;
 }
-
-
-/** Password pop up **/
 
 .modalpw-overlay {
     position: fixed;
@@ -120,7 +125,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
 }
 
@@ -129,36 +134,40 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff;
+    background: #1e1e1e;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     text-align: center;
     max-width: 90%;
     width: 400px;
     height: 300px;
     gap: 10px;
-    box-sizing: border-box;
+    color: #e0e0e0;
 }
+
 .modalpw-input {
     border-radius: 8px;
     padding: 5px;
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    color: #e0e0e0;
 }
 
 .modalpw-inpu.modalpw-inpu {
     margin: 10px;
     padding: 8px;
     border-radius: 8px;
-    border-color: black, black;
+    border-color: #444;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
 }
-
-/** Add section **/
 
 .bingo-addword {
     margin: 20px;
+    color: #e0e0e0;
 }
 
 .bingo-table-add-container {
@@ -171,17 +180,19 @@ html, body {
     margin-top: 10px;
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid #000;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
 }
 
 .bingo-table-add th, .bingo-table-add td {
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     padding: 10px;
     padding-right: 50px;
     text-align: left;
+    color: #e0e0e0;
 }
 
 .bingo-table-add thead {
-    background-color: #f2f2f2;
+    background-color: #333;
 }

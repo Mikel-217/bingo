@@ -64,7 +64,6 @@
         buttonStates!.Clear();
         pressedButton!.Clear();
         bingoData?.bingoWords!.Clear();
-
         try {
             string jsonData = File.ReadAllText(path);
             var data = JsonSerializer.Deserialize<Bingodata>(jsonData);
@@ -74,7 +73,7 @@
 
             int lengt = data.bingoWords.Count();
             for (int bingoField = 0; bingoField < 25; bingoField++) {
-                int index = random.Next(1, 26);
+                int index = random.Next(0, lengt);
                 string currentWord = data.bingoWords[index];
                 if(randomWords!.Contains(currentWord)) {
                     bingoField--;
@@ -110,13 +109,6 @@
         }
         return _bingostate;
     }
-    
-    //for displaying the popup
-    @* public void Show() {
-        _isVisible = true;
-        StateHasChanged();
-    } *@
-
     private void Close() {
         _isVisible = false;
         StateHasChanged();
