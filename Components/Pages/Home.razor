@@ -100,7 +100,7 @@
         StateHasChanged();
     }
     private bool checkfBingo() {
-        List<int[]> rows = new List<int[]> {bingorows.bingorow1, bingorows.bingorow2, bingorows.bingorow3, bingorows.bingorow4, bingorows.bingorow5};
+        List<int[]> rows = new List<int[]> {bingorows.bingorow1, bingorows.bingorow2, bingorows.bingorow3, bingorows.bingorow4, bingorows.bingorow5, bingorows.bingorowside1, bingorows.bignorowside2};
         foreach (var row in rows) {
             if (row.All(num => pressedButton!.Contains(num))) {
                 _isVisible = true;
