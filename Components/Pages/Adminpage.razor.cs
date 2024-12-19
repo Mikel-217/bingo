@@ -47,7 +47,7 @@ public partial class AdminController {
     private void writeData() {
         try {
             var bingoData = new Bingodata { bingoWords = currentwords };
-            string writingData = JsonSerializer.Serialize(bingoData, new JsonSerializerOptions { WriteIndented = true });
+            string writingData = JsonSerializer.Serialize(bingoData);
             File.WriteAllText(path, writingData);   
             data?.newWordslist.Clear();
         }
