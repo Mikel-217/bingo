@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc.Razor.Internal;
 using System.Data;
 using System.ComponentModel;
+using bingo.Components.Pages;
 
 namespace Admin;
 
@@ -47,7 +48,7 @@ public partial class AdminController {
     private void writeData() {
         try {
             var bingoData = new Bingodata { bingoWords = currentwords };
-            string writingData = JsonSerializer.Serialize(bingoData);
+            string writingData = JsonSerializer.Serialize(bingoData, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, writingData);   
             data?.newWordslist.Clear();
         }

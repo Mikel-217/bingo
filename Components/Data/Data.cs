@@ -13,6 +13,7 @@ public class Bingorows {
     public int[] bingorow4 = {3, 8, 13, 18, 23};
     public int[] bingorow5 = {4, 9, 14, 19, 24};
 
+    //diagonal bingo rows
     public int[] bingorowside1 = {0, 6, 12, 18, 24};
     public int[] bignorowside2 = {4, 8, 12, 16, 20};
 }
