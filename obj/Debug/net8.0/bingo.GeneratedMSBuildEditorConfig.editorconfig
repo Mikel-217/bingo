@@ -49,3 +49,7 @@ build_metadata.AdditionalFiles.CssScope = b-w02w5wigt5
 [C:/tmp/bingo/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-p3rga3v1ao
+
+[C:/tmp/bingo/Components/Pages/Chatroom.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDaGF0cm9vbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-6jrtse2hdg
