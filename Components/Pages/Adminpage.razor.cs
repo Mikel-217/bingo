@@ -15,6 +15,11 @@ public partial class AdminController {
 
     public List<string> currentwords { get; set; } = new List<string>();
     public string? deletedWord { get; set; }
+
+    public int? _indexChangeword { get; set; }
+    public string? _changedWord{ get; set; }
+
+
     private string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Data", "words.json");
     public void wordhandler() {
         if (data?.newWordslist == null || data.newWordslist.Count == 0) {
@@ -66,6 +71,10 @@ public partial class AdminController {
             throw new Exception("Word doesnt exist!");
         }
         deletedWord = "";
+    }
+
+    public void changeWord() {
+
     }
     
 }

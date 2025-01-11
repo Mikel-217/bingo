@@ -9,43 +9,43 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = bingo
 build_property.RootNamespace = bingo
-build_property.ProjectDir = C:\tmp\bingo\
+build_property.ProjectDir = C:\dev\bingo\bingo\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\tmp\bingo
+build_property.MSBuildProjectDirectory = C:\dev\bingo\bingo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/tmp/bingo/Components/App.razor]
+[C:/dev/bingo/bingo/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tmp/bingo/Components/Pages/Adminpage.razor]
+[C:/dev/bingo/bingo/Components/Pages/Adminpage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pbnBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tmp/bingo/Components/Pages/Error.razor]
+[C:/dev/bingo/bingo/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tmp/bingo/Components/Pages/Home.razor]
+[C:/dev/bingo/bingo/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tmp/bingo/Components/Routes.razor]
+[C:/dev/bingo/bingo/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tmp/bingo/Components/_Imports.razor]
+[C:/dev/bingo/bingo/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tmp/bingo/Components/Layout/MainLayout.razor]
+[C:/dev/bingo/bingo/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-w02w5wigt5
 
-[C:/tmp/bingo/Components/Layout/NavMenu.razor]
+[C:/dev/bingo/bingo/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-p3rga3v1ao

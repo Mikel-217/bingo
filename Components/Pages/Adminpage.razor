@@ -27,6 +27,7 @@
             <button class="buttonmain" @onclick="addWord">Add</button>
             <button class="buttonmain" @onclick="save">Save to File</button>
             <button class="buttonmain" @onclick="refresh">Refresh</button>
+            <button class="buttonmain" @onclick="edit">Edit</button>
         </div>
     </div>
     <div class="bingo-table-add-container">
@@ -41,8 +42,14 @@
                 @for(int i = 0; i < length; i++) {
                     localindex = i;
                     <tr>
-                        <td>@admin.currentwords[i]</td>
-                        <td><button class="buttonmain" @onclick="@(e => delete(e, localindex))">Delete</button></td>
+                        <td style="@(!_isVisibleedit ? "displac: block;" : "display: none;")">@admin.currentwords[i]</td>
+                        <td style="@(_isVisibleedit ? "display: flexbox;" : "display: none;")"><input type="text" placeholder="@admin.currentwords[i]" class="modalpw-input" @bind="admin._changedWord"></td>
+                        <div style="display: row; gap: 10px;">
+                            <td>
+                                <button class="buttonmain" @onclick="@(e => delete(e, localindex))">Delete</button>
+                                <button style="@(_isVisibleedit ? "display: flexbox" : "display: none;")" class="buttonmain" @onclick="@(e => saveEdit(e, localindex))">Save Change</button>
+                            </td>
+                        </div>
                     </tr>
                 }
             </tbody>
@@ -71,6 +78,8 @@
     //pshhhh no pw here :D
     private string user = "admin";
     private string pw = "diamondhost123";
+
+    private bool _isVisibleedit = false;
 
     //bool for pop up
     private bool _isVisible = true;
@@ -129,6 +138,13 @@
         }
     }
 
+    private void edit(MouseEventArgs e){
+        _isVisibleedit = true;
+    }
+
+    private void saveEdit(MouseEventArgs e, int localindex) {
+        Console.WriteLine(localindex);
+    }
     public void refresh() {
         localindex = 0;
         readData();

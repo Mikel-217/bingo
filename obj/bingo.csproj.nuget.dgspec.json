@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\tmp\\bingo\\bingo.csproj": {}
+    "C:\\dev\\bingo\\bingo\\bingo.csproj": {}
   },
   "projects": {
-    "C:\\tmp\\bingo\\bingo.csproj": {
+    "C:\\dev\\bingo\\bingo\\bingo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\tmp\\bingo\\bingo.csproj",
+        "projectUniqueName": "C:\\dev\\bingo\\bingo\\bingo.csproj",
         "projectName": "bingo",
-        "projectPath": "C:\\tmp\\bingo\\bingo.csproj",
-        "packagesPath": "C:\\Users\\Kunze\\.nuget\\packages\\",
-        "outputPath": "C:\\tmp\\bingo\\obj\\",
+        "projectPath": "C:\\dev\\bingo\\bingo\\bingo.csproj",
+        "packagesPath": "C:\\Users\\Mikel\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\bingo\\bingo\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kunze\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Mikel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -171,24 +171,26 @@ html, body {
 }
 
 .bingo-table-add-container {
-    width: 80%;
-    display: flex;
+    width: 90%;
+    display: flexbox;
     justify-content: center;
+    table-layout: auto;
 }
 
 .bingo-table-add {
-    margin-top: 10px;
+    margin-top: 30px;
     border-collapse: collapse;
     width: 100%;
     border: 1px solid #444;
     background-color: #1e1e1e;
+    table-layout: auto;
 }
 
 .bingo-table-add th, .bingo-table-add td {
     font-size: 16px;
     border: 1px solid #555;
     padding: 10px;
-    padding-right: 50px;
+    padding-right: 100px;
     text-align: left;
     color: #e0e0e0;
 }
@@ -196,3 +198,4 @@ html, body {
 .bingo-table-add thead {
     background-color: #333;
 }
+
