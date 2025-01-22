@@ -74,7 +74,7 @@ public partial class AdminController {
     }
 
     public void changeWord() {
-
+        //Todo
     }
     
 }
